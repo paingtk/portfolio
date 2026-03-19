@@ -1,0 +1,88 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Paing Thu Kyaw | Full-Stack Developer",
+  description = "Full-Stack Developer specialising in building dynamic, scalable web applications. Based in Bangkok, Thailand.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      const theme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      if (theme === "dark") document.documentElement.classList.add("dark");
+    </script>
+  </head>
+  <body class="min-h-screen antialiased">
+    <Navbar />
+    <main class="pt-[73px]">
+      <slot />
+    </main>
+
+    <!-- Theme toggle logic (runs once after DOM is ready) -->
+    <script is:inline>
+      function updateThemeIcons(theme) {
+        document.querySelectorAll(".sun-icon").forEach(function (icon) {
+          icon.classList.toggle("hidden", theme !== "dark");
+        });
+        document.querySelectorAll(".moon-icon").forEach(function (icon) {
+          icon.classList.toggle("hidden", theme === "dark");
+        });
+      }
+
+      function applyTheme(theme) {
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+        updateThemeIcons(theme);
+      }
+
+      function getThemePreference() {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      // Update icons to match current theme
+      updateThemeIcons(getThemePreference());
+
+      // Attach click handlers to all toggle buttons
+      document.querySelectorAll("[data-theme-toggle]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var current = document.documentElement.classList.contains("dark")
+            ? "dark"
+            : "light";
+          var next = current === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", next);
+          applyTheme(next);
+        });
+      });
+    </script>
+  </body>
+</html>
