@@ -1,0 +1,176 @@
+---
+const experiences = [
+  {
+    company: "Publicis Media Groupe",
+    via: "via Bi:Procsi & Azendo",
+    role: "Full-Stack Developer",
+    location: "Bangkok, Thailand",
+    period: "Aug 2025 – Present",
+    tech: ["Angular", "React", "Express.js", "GCP", "Tailwind CSS", "Jira", "Git"],
+    highlights: [
+      "Developing and maintaining internal enterprise applications for a global advertising leader.",
+      "Built frontend components using Angular and React with Tailwind CSS for responsive, scalable UI.",
+      "Implemented backend services with Express.js integrated with Google Cloud Platform.",
+      "Contributed to PlannersAI, an AI-powered planning tool, including structured error logging with trace IDs.",
+    ],
+  },
+  {
+    company: "Tilted",
+    role: "Full-Stack Developer",
+    location: "Bangkok, Thailand",
+    period: "Jul 2024 – Jul 2025",
+    tech: ["React.js", "Node.js", "TypeScript", "MongoDB", "Bootstrap", "WebSocket"],
+    highlights: [
+      "Built and enhanced the Tilted web application with React.js, Node.js, and MongoDB.",
+      "Designed and optimised the live streaming feature for smooth performance and minimal latency.",
+      "Implemented WebSocket for real-time communication between users and streamers.",
+      "Architected the app as a Progressive Web App (PWA) with Google, Apple, and Steam auth.",
+    ],
+  },
+  {
+    company: "GetSolar",
+    role: "Full-Stack Developer",
+    location: "Singapore (Remote)",
+    period: "Jul 2023 – Jun 2024",
+    tech: ["React", "Next.js", "TypeScript", "AWS", "Tailwind CSS", "Jest"],
+    highlights: [
+      "Refactored codebase to adopt functional programming paradigm.",
+      "Developed backend services using Node.js with serverless architecture on AWS Lambda.",
+      "Built and maintained the admin frontend using Next.js with TypeScript.",
+      "Applied Jest for comprehensive testing of both backend and frontend components.",
+    ],
+  },
+  {
+    company: "PropTexx",
+    role: "Front End Developer",
+    location: "Singapore (Remote)",
+    period: "Mar 2022 – Jun 2022",
+    tech: ["Vue 3", "TypeScript", "SASS", "Nuxt.js", "Vuetify", "Figma"],
+    highlights: [
+      "Developed the new landing page design from scratch using Nuxt.js.",
+      "Maintained the codebase of proptexx.ai by fixing bugs and enhancing the UI.",
+      "Developed and implemented new features using Vue 3 and TypeScript.",
+    ],
+  },
+  {
+    company: "Vane Technology",
+    role: "Software Developer",
+    location: "Yangon, Myanmar",
+    period: "Feb 2020 – Feb 2022",
+    tech: ["Vue.js", "Quasar", "ASP.NET Core", "Azure", "Chart.js"],
+    highlights: [
+      "Developed the Sales Order Management web application from scratch using Vue.js and Quasar.",
+      "Participated in frontend development of the Health Screening project.",
+      "Improved and developed a new UI for the e-commerce website built on nopCommerce.",
+    ],
+  },
+  {
+    company: "Bindez",
+    role: "Junior Front End Developer",
+    location: "Yangon, Myanmar",
+    period: "Oct 2018 – Jul 2019",
+    tech: ["Vue.js", "Vuex", "Vuetify", "Chart.js", "InVision"],
+    highlights: [
+      "Participated in the planning and development of Bindez Insights using Vue.js ecosystem.",
+      "Maintained and developed new features for the MPT Console in-house application.",
+    ],
+  },
+];
+---
+
+<section
+  id="experience"
+  class="border-t border-border dark:border-border-dark"
+>
+  <div class="mx-auto max-w-5xl px-6 py-20 md:py-28">
+    <!-- Section header -->
+    <div class="mb-12">
+      <p
+        class="text-sm font-medium tracking-widest uppercase text-primary dark:text-primary-dark"
+      >
+        Experience
+      </p>
+      <h2
+        class="mt-2 text-3xl font-bold text-(--color-text) dark:text-text-dark"
+      >
+        Work History
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Vertical line -->
+      <div
+        class="absolute top-0 bottom-0 left-0 w-px bg-border md:left-35 dark:bg-border-dark"
+      >
+      </div>
+
+      <!-- Entries -->
+      <div class="flex flex-col gap-12">
+        {
+          experiences.map((exp) => (
+            <div class="relative grid gap-4 pl-8 md:grid-cols-[140px_1fr] md:gap-8 md:pl-0">
+              {/* Period - desktop */}
+              <div class="hidden pt-1 text-right md:block">
+                <span class="text-sm font-medium text-text-secondary dark:text-text-secondary-dark">
+                  {exp.period}
+                </span>
+              </div>
+
+              {/* Timeline dot */}
+              <div class="absolute top-2 left-0 md:left-35 md:-translate-x-1/2">
+                <div class="h-3 w-3 rounded-full border-2 border-primary bg-bg dark:border-primary-dark dark:bg-bg-dark" />
+              </div>
+
+              {/* Content card */}
+              <div class="rounded-xl border border-border bg-bg-secondary p-6 transition-colors dark:border-border-dark dark:bg-bg-secondary-dark">
+                {/* Header */}
+                <div class="mb-3">
+                  <h3 class="text-lg font-semibold text-(--color-text) dark:text-text-dark">
+                    {exp.company}
+                  </h3>
+                  {exp.via && (
+                    <p class="text-xs text-text-secondary dark:text-text-secondary-dark">
+                      {exp.via}
+                    </p>
+                  )}
+                  <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span class="text-sm font-medium text-primary dark:text-primary-dark">
+                      {exp.role}
+                    </span>
+                    <span class="text-xs text-text-secondary dark:text-text-secondary-dark">
+                      {exp.location}
+                    </span>
+                  </div>
+                  {/* Period - mobile */}
+                  <p class="mt-1 text-xs text-text-secondary md:hidden dark:text-text-secondary-dark">
+                    {exp.period}
+                  </p>
+                </div>
+
+                {/* Highlights */}
+                <ul class="mb-4 space-y-2">
+                  {exp.highlights.map((item) => (
+                    <li class="flex gap-2 text-sm leading-relaxed text-text-secondary dark:text-text-secondary-dark">
+                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40 dark:bg-primary-dark/40" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Tech tags */}
+                <div class="flex flex-wrap gap-1.5">
+                  {exp.tech.map((t) => (
+                    <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary dark:bg-primary-dark/10 dark:text-primary-dark">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
