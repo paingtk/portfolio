@@ -30,7 +30,7 @@ const skills = [
 <section class="border-t border-border bg-bg-secondary dark:border-border-dark dark:bg-bg-secondary-dark">
   <div class="mx-auto max-w-5xl px-6 py-20 md:py-28">
     <!-- Section header -->
-    <div class="mb-12">
+    <div data-animate class="mb-12">
       <p
         class="text-sm font-medium tracking-widest uppercase text-primary dark:text-primary-dark"
       >
@@ -46,8 +46,8 @@ const skills = [
     <!-- Skills grid -->
     <div class="grid gap-6 sm:grid-cols-2">
       {
-        skills.map((skill) => (
-          <div class="group rounded-xl border border-border bg-bg p-6 transition-all duration-200 hover:border-primary/30 hover:shadow-md dark:border-border-dark dark:bg-(--color-bg-dark) dark:hover:border-primary-dark/30">
+        skills.map((skill, i) => (
+          <div data-animate data-delay={String((i % 4) * 100)} class="group rounded-xl border border-border bg-bg p-6 transition-all duration-200 hover:border-primary/30 hover:shadow-md dark:border-border-dark dark:bg-(--color-bg-dark) dark:hover:border-primary-dark/30">
             {/* Icon */}
             <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 dark:bg-primary-dark/10">
               {skill.icon === "layout" && (
@@ -125,7 +125,7 @@ const skills = [
     </div>
 
     <!-- Tech stack tags -->
-    <div class="mt-12">
+    <div data-animate class="mt-12">
       <p
         class="mb-4 text-sm font-medium text-text-secondary dark:text-text-secondary-dark"
       >

@@ -5,11 +5,11 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary: #3b82f6;
-  --color-primary-dark: #60a5fa;
+  --color-primary: #4d9e8d;
+  --color-primary-dark: #6dbfad;
 
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f8fafc;
+  --color-bg: #f5f0eb;
+  --color-bg-secondary: #ede8e2;
   --color-text: #0f172a;
   --color-text-secondary: #475569;
   --color-border: #e2e8f0;
@@ -23,6 +23,29 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Scroll animations */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+[data-animate].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate][data-delay="100"] { transition-delay: 100ms; }
+[data-animate][data-delay="200"] { transition-delay: 200ms; }
+[data-animate][data-delay="300"] { transition-delay: 300ms; }
+[data-animate][data-delay="400"] { transition-delay: 400ms; }
+[data-animate][data-delay="500"] { transition-delay: 500ms; }
+
+::selection {
+  background-color: #4d9e8d40;
+  color: inherit;
 }
 
 body {
